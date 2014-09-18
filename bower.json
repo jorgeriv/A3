@@ -1,0 +1,21 @@
+{
+  "name": "A3",
+  "version": "0.0.1",
+  "main": "dist/a3.js",
+  "ignore": [
+    "charts",
+    "examples",
+    ".bowerrc",
+    ".gitignore",
+    ".jshintignore",
+    ".jshintrc",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "d3": "~3.4.11",
+    "angular": "~1.2.25"
+  }
+}
