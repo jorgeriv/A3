@@ -1,0 +1,6 @@
+bower_components/
+node_modules/
+dist/
+
+# don't track generated/copied html demo files
+demo/*.html
