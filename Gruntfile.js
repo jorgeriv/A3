@@ -34,40 +34,66 @@ module.exports = function(grunt) {
     },
     jshint: {
       options: {
-        curly: true,
+        boss: true,
         eqeqeq: true,
-        immed: true,
+        curly: true,
+        browser: true,
         latedef: true,
+        eqnull: true,
+        expr: true,
+        globalstrict: true,
+        immed: true,
+        laxbreak: true,
+        loopfunc: true,
         newcap: true,
         noarg: true,
+        noempty: true,
+        nonew: true,
+        quotmark: true,
+        smarttabs: true,
         sub: true,
+        trailing: true,
         undef: true,
         unused: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
         globals: {
-          jQuery: true
-        }
-      },
+          angular: false,
+          d3: false
+          }
+        },
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
+      libTest: {
         src: ['lib/**/*.js', 'test/**/*.js']
       }
     },
-    qunit: {
-      files: ['test/**/*.html']
+    ngAnnotate: {
+      options: {
+        singleQuotes: true
+      },
+      app: {
+        files: {
+          'lib/a3.js': ['lib/a3.js']
+        }
+      }
+    },
+    karma: {
+      unit: {
+        options: {
+          files: ['test/**/*.js']
+        },
+        background: true,
+        singleRun: false
+      }
     },
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'qunit']
+      libTest: {
+        files: '<%= jshint.libTest.src %>',
+        tasks: ['jshint:libTest', 'karma:unit:run']
       }
     }
   });
@@ -75,11 +101,12 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-ng-annotate');
+  grunt.loadNpmTasks('grunt-karma');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'karma', 'ngAnnotate', 'concat', 'uglify']);
 
 };

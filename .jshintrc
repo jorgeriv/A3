@@ -1,6 +1,9 @@
 {
   "boss": true,
+  "eqeqeq": true,
+  "curly": true,
   "browser": true,
+  "latedef": true,
   "eqnull": true,
   "expr": true,
   "globalstrict": true,
