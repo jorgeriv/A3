@@ -1,5 +1,4 @@
-'use strict';
-
+;(function(){'use strict';
 var a3 = angular.module('a3', []);
 
 a3.visualization = function(name, func){
@@ -10,3 +9,4 @@ a3.visualization = function(name, func){
 	this.types[name] = func;
 	return this.types[name];
 };
+}());
