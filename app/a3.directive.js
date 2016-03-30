@@ -9,6 +9,8 @@ function a3directive(){
 		scope.height = parseInt(attr.height, 10) || 200;
 		var svg = d3.select(el[0]).append('svg')
 			.attr({width: scope.width, height: scope.height});
+
+
 		var margin = {top: 10, right: 10, bottom: 20, left: 20};
 		    scope.innerWidth = scope.width - margin.left - margin.right;
 		    scope.innerHeight = scope.height - margin.top - margin.bottom;
@@ -21,8 +23,8 @@ function a3directive(){
 				d3.max(scope.data, function(d){return d;})
 			])
 			.range([scope.innerHeight, 0]);
-		var inner = svg.append('g')
-		    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+		var inner = svg.append('g');
+		    //.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
 		var xAxis = d3.svg.axis()
 		    .scale(xScale)
@@ -30,6 +32,7 @@ function a3directive(){
 		var yAxis = d3.svg.axis()
 		    .scale(yScale)
 		    .orient('left');
+/*
 		svg.append('g')
 		    .attr('class', 'x axis')
 		    .attr('transform', 'translate(' + margin.left +',' + (scope.height- margin.bottom) + ')')
@@ -38,7 +41,7 @@ function a3directive(){
 		    .attr('class', 'y axis')
 		    .attr('transform', 'translate(' + margin.left + ','+margin.top+')')
 		    .call(yAxis);
-
+*/
 		var plot = function plot(type){
 			a3.types[type](inner, scope);
 		};
