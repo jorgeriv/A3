@@ -1,7 +1,9 @@
 'use strict';
-
+var a3 = angular.module('a3');
 a3.directive('pieChart', function(){
       function link(scope, el, attr){
+        var width, height;
+        width = height = 200;
         var color = d3.scale.category10();
         var svg = scope.svg;
         var min = Math.min(width, height);
@@ -11,11 +13,11 @@ a3.directive('pieChart', function(){
           .innerRadius(min / 2 * 0.5);
 
         pie.value(function(d){ return d.value; });
-    
+
         var g = svg.append('g')
           // center the donut chart
           .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
-        
+
         // add the <path>s for each arc slice
         var arcs = g.selectAll('path');
 
@@ -23,7 +25,7 @@ a3.directive('pieChart', function(){
           arcs = arcs.data(pie(data));
           arcs.enter().append('path')
             .style('stroke', 'white')
-            .attr('fill', function(d, i){ return color(i) });
+            .attr('fill', function(d, i){ return color(i); });
           arcs.exit().remove();
           arcs.attr('d', arc);
         }, true);

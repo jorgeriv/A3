@@ -1,0 +1,14 @@
+.content-wrapper{
+	margin: 0 20px;
+}
+
+
+h1{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.arc{
+	fill: lightblue;
+}
