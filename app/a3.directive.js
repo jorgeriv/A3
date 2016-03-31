@@ -8,7 +8,7 @@ function a3directive(){
 		scope.width = parseInt(attr.width, 10) || 200;
 		scope.height = parseInt(attr.height, 10) || 200;
 		var svg = d3.select(el[0]).append('svg')
-			.attr({width: scope.width, height: scope.height});
+			.attr({width: scope.width, height: scope.height, version:'1.1'});
 
 
 		var margin = {top: 10, right: 10, bottom: 20, left: 20};

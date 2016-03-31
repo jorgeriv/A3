@@ -11,4 +11,9 @@ h1{
 
 .arc{
 	fill: lightblue;
+	stroke: #444;
+}
+
+.arc-back{
+	stroke: #e0e0e0;
 }
