@@ -1,0 +1,31 @@
+.content-wrapper{
+	margin: 0 20px;
+}
+
+
+h1{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+}
+.arc0{
+	fill: violet;
+}
+.arc1{
+	fill: lightblue;
+}
+.arc2{
+	fill: lightgreen;
+}
+
+.arc3{
+	fill: yellow;
+}
+
+.arc4{
+	fill: orange;
+}
+
+.arc5{
+	fill: red;
+}
