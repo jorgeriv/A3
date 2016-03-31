@@ -15,10 +15,8 @@ angular.module('a3')
     return currAngle;
   })
   .endAngle(function(d){
-    console.log('starts at', currAngle);
     var scaled = scale(d);
     var res = scaled + currAngle;
-    console.log('ends at', res);
     currAngle = res;
     return res;
   });
