@@ -2,31 +2,30 @@
 	margin: 0 20px;
 }
 
-.axis path,
-.axis line{
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
-}
-/*
-.x.axis path {
-  display: none;
-}
-*/
-
-.axis text{
-  font-family: sans-serif;
-  font-size: 10px;
-}
 
 h1{
   font-family: sans-serif;
   font-weight: bold;
   font-size: 16px;
 }
-/*
-.tick
-{
-  stroke-dasharray: 1, 2;
+.arc0{
+	fill: violet;
 }
-*/
+.arc1{
+	fill: lightblue;
+}
+.arc2{
+	fill: lightgreen;
+}
+
+.arc3{
+	fill: yellow;
+}
+
+.arc4{
+	fill: orange;
+}
+
+.arc5{
+	fill: red;
+}

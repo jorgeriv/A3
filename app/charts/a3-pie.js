@@ -1,38 +1,38 @@
-'use strict';
-var a3 = angular.module('a3');
-a3.directive('pieChart', function(){
-      function link(scope, el, attr){
-        var width, height;
-        width = height = 200;
-        var color = d3.scale.category10();
-        var svg = scope.svg;
-        var min = Math.min(width, height);
-        var pie = d3.layout.pie().sort(null);
-        var arc = d3.svg.arc()
-          .outerRadius(min / 2 * 0.9)
-          .innerRadius(min / 2 * 0.5);
+;(function(){'use strict';
+angular.module('a3')
+.visualization('pie', function(svg, scope){
+  var currAngle = 0;
+  var scale = d3.scale.linear()
+  .range([0, 2 * Math.PI])
+  .domain([0, d3.sum(scope.data, function(d){
+    return d;
+  })]);
 
-        pie.value(function(d){ return d.value; });
+  var arc = d3.svg.arc()
+  .innerRadius(0)
+  .outerRadius(100)
+  .startAngle(function(){
+    return currAngle;
+  })
+  .endAngle(function(d){
+    console.log('starts at', currAngle);
+    var scaled = scale(d);
+    var res = scaled + currAngle;
+    console.log('ends at', res);
+    currAngle = res;
+    return res;
+  });
 
-        var g = svg.append('g')
-          // center the donut chart
-          .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+  svg.selectAll('path')
+  .data(scope.data)
+  .enter().append('path')
+  .attr('class',  function(d, i){
+    return 'arc' + i;
+  })
+  .attr('stroke-width', 0)
+  .attr('transform', 'translate(100, 100)')
+  .attr('d', arc);
 
-        // add the <path>s for each arc slice
-        var arcs = g.selectAll('path');
-
-        scope.$watch('data', function(data){
-          arcs = arcs.data(pie(data));
-          arcs.enter().append('path')
-            .style('stroke', 'white')
-            .attr('fill', function(d, i){ return color(i); });
-          arcs.exit().remove();
-          arcs.attr('d', arc);
-        }, true);
-      }
-      return {
-        link: link,
-        restrict: 'E',
-        scope: { data: '=' }
-      };
-    });
+  //svg.selectAll('path').data(scope.data).enter();
+});
+}());
