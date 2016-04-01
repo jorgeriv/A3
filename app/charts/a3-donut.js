@@ -9,8 +9,8 @@ angular.module('a3')
   })]);
 
   var arc = d3.svg.arc()
-  .innerRadius(50)
-  .outerRadius(100)
+  .innerRadius('50')
+  .outerRadius('100')
   .startAngle(function(){
     return currAngle;
   })
